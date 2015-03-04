@@ -1,0 +1,90 @@
+//Nathaniel D. Smith
+//Date: 3/4/15
+//A simple servlet with two JSP's
+
+package com.example;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+//Request from the user/client
+
+@SuppressWarnings("unused")
+public class ServletExample extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//PrintWriter out = response.getWriter();
+		
+		if(request.getParameter("firstname") == null || request.getParameter("lastname") == null){
+			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			return;
+		}
+		
+		String firstName = request.getParameter("firstname");
+		String lastName = request.getParameter("lastname");
+		
+		request.setAttribute("firstname", firstName);
+		request.setAttribute("lastname", lastName);
+		
+		getServletContext().getRequestDispatcher("/output.jsp").forward(request, response);
+		
+	}
+
+}
+
+*************************MORE**********************************
+//index.jsp
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="servletexample" method="post">
+		<table border="0">
+		<tr>
+			<td>First Name: </td> <td><input type="text" name="firstname" /></td>
+			</tr>
+			<tr>
+			<td>Last Name: </td> <td><input type="text" name="lastname" /></td>
+			</tr>
+			<tr>
+			<td>Submit: </td> <td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+***********************************MORE**************************
+//output.jsp
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Your first and last name is: </h1>
+	
+	//now add java script-let
+	<%
+		String firstName = (String) request.getAttribute("firstname");
+		String lastName  = (String) request.getAttribute("lastname");
+		
+		out.print(firstName + " " + lastName);
+	%>
+</body>
+</html>
