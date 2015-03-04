@@ -1,4 +1,4 @@
-/*Nathaniel D. Smith
+/*Nathaniel D. Smith, Eclipse
 * Date: 3/4/15
 * A simple Hello Java example 
 */
