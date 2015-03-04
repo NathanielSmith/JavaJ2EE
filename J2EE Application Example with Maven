@@ -1,0 +1,56 @@
+/*Nathaniel Smith
+*Date: 3/4/15
+* In this example used Maven in J2EE to run my app through Apache TomCat
+* Used: http://localhost:8080/manager , and signed in as manager
+* Set up the link to app, deployed...
+* After clicking: j2eeapplication-0.0.1-SNAPSHOT link that I set up
+* Result: Initial project test
+*/
+
+//j2eeapplication/pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example.j2eeapp</groupId>
+  <artifactId>j2eeapplication</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>J2EE Application Example</name>
+</project>
+
+*************************MORE************************************
+
+//web.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" 
+version="3.0">
+
+  <display-name>J2EE Application Example</display-name>
+  
+  <welcome-file-list>   
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+************************MORE**************************************
+
+//index.jsp
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</head>
+<body>
+	<h1>Initial project test</h1>
+</body>
+</html>
+
